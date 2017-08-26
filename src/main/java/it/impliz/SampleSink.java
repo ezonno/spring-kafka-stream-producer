@@ -27,7 +27,7 @@ import org.springframework.messaging.SubscribableChannel;
 /**
  * @author Ilayaperumal Gopinathan
  */
-@EnableBinding(SampleSink.Sink.class)
+//@EnableBinding(SampleSink.Sink.class)
 public class SampleSink {
 
 	// Sink application definition

@@ -19,14 +19,7 @@ package it.impliz;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.cloud.stream.messaging.Processor;
-import org.springframework.integration.annotation.Aggregator;
-import org.springframework.integration.annotation.CorrelationStrategy;
-import org.springframework.integration.annotation.ReleaseStrategy;
-import org.springframework.messaging.Message;
-import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.SendTo;
-
-import java.util.List;
 
 /**
  * @author Ilayaperumal Gopinathan
@@ -38,27 +31,15 @@ public class SampleTransformer {
 
 	// Transformer application definition
 
-    @ReleaseStrategy
-    public boolean isReadytoRelease(List<Message<?>> messages) {
-        return messages.size() == 2;
-    }
-
-
-    @CorrelationStrategy
-    public String correlateBy(@Header("contentType") String id) {
-        return id;
-    }
-
-//	@StreamListener(Processor.INPUT)
-//	@SendTo(Processor.OUTPUT)
-	@Aggregator(inputChannel = Processor.INPUT, outputChannel = Processor.OUTPUT, discardChannel = "nullChannel")
-	public List<Message<?>> receive(List<Message<?>> messages) {
+	@StreamListener(Processor.INPUT)
+	@SendTo(Processor.OUTPUT)
+	public Bar receive(Bar barMessage) {
 		System.out.println("******************");
 		System.out.println("At the transformer");
 		System.out.println("******************");
-//		System.out.println("Received value "+ barMessage.getValue() + " of type " + barMessage.getClass());
-//		System.out.println("Transforming the value to " + TRANSFORMATION_VALUE + " and with the type " + barMessage.getClass());
-//		barMessage.setValue(TRANSFORMATION_VALUE);
-		return messages;
+		System.out.println("Received value "+ barMessage.getValue() + " of type " + barMessage.getClass());
+		System.out.println("Transforming the value to " + TRANSFORMATION_VALUE + " and with the type " + barMessage.getClass());
+		barMessage.setValue(TRANSFORMATION_VALUE);
+		return barMessage;
 	}
 }

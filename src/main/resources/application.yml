@@ -1,5 +1,5 @@
 server:
-  port: 8099
+  port: 8097
 spring:
   cloud:
     stream:
@@ -11,5 +11,5 @@ spring:
         output:
           destination: xformed
           content-type: application/json
-        sample-sink:
-          destination: xformed
+#        sample-sink:
+#          destination: xformed
