@@ -19,17 +19,16 @@ package it.impliz;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.cloud.stream.messaging.Processor;
+import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.SendTo;
 
-/**
- * @author Ilayaperumal Gopinathan
- */
+import java.util.UUID;
+
+
 @EnableBinding(Processor.class)
 public class SampleTransformer {
 
 	private static final String TRANSFORMATION_VALUE = "HI";
-
-	// Transformer application definition
 
 	@StreamListener(Processor.INPUT)
 	@SendTo(Processor.OUTPUT)

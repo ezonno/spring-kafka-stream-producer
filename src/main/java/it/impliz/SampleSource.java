@@ -27,9 +27,7 @@ import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHeaders;
 import org.springframework.messaging.support.MessageBuilder;
 
-/**
- * @author Ilayaperumal Gopinathan
- */
+
 @EnableBinding(SampleSource.Source.class)
 public class SampleSource {
 

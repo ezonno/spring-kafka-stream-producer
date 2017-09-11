@@ -18,10 +18,4 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
-//	@Bean
-//	@InboundChannelAdapter(value = Source.OUTPUT)
-//	public MessageSource<String> timerMessageSource() {
-//		return () -> new GenericMessage<>(new SimpleDateFormat().format(new Date()));
-//	}
-
 }
